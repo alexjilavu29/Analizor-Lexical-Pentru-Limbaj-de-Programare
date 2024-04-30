@@ -1,0 +1,15 @@
+Tip: cuvant cheie, Valoare: var
+Tip: identificator, Valoare: x
+Tip: doua puncte, Valoare: :
+Tip: cuvant cheie, Valoare: integer
+Tip: delimitator, Valoare: ;
+Tip: cuvant cheie, Valoare: begin
+Tip: identificator, Valoare: x
+Tip: operator de asignare, Valoare: :=
+Tip: constanta intreaga, Valoare: 10
+Tip: delimitator, Valoare: ;
+Tip: cuvant cheie, Valoare: end
+Tip: delimitator, Valoare: .
+Tabela de stringuri: {'var': 0, ' ': 1, 'x': 2, ':': 3, 'integer': 4, ';': 5, 'begin': 6, ':=': 7, '10': 8, 'end': 9, '.': 10}
+
+
