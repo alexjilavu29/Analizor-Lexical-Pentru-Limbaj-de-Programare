@@ -16,33 +16,33 @@ class LexicalAnalyzer:
 
         self.states = {
             'initial': {},
-            'identifier': {'is_final': True},
-            'integer': {'is_final': True},
-            'float': {'is_final': True},
-            'keyword': {'is_final': True},
-            'error': {'is_final': True},
-            'assignment_operator': {'is_final': True},
-            'colon': {'is_final': True},
-            'delimiter': {'is_final': True},
-            'whitespace': {'is_final': True}
+            'identificator': {'is_final': True},
+            'constanta intreaga': {'is_final': True},
+            'constanta flotanta': {'is_final': True},
+            'cuvant cheie': {'is_final': True},
+            'eroare': {'is_final': True},
+            'operator de asignare': {'is_final': True},
+            'doua puncte': {'is_final': True},
+            'delimitator': {'is_final': True},
+            'spatiu': {'is_final': True}
         }
         self.current_state = 'initial'
 
         # Tranziții sunt exemplificate aici pentru simplificare
         self.transitions = {
             'initial': [
-                (self.is_alpha, 'identifier'),
-                (str.isdigit, 'integer'),
-                (lambda char: char == ':', 'colon'),
-                (lambda char: char in ';.', 'delimiter'),
-                (str.isspace, 'whitespace')
+                (self.is_alpha, 'identificator'),
+                (str.isdigit, 'constanta intreaga'),
+                (lambda char: char == ':', 'doua puncte'),
+                (lambda char: char in ';.', 'delimitator'),
+                (str.isspace, 'spatiu')
             ],
-            'identifier': [(self.is_alnum, 'identifier')],
-            'integer': [(str.isdigit, 'integer')],
-            'colon': [(lambda char: char == '=', 'assignment_operator')],
-            'assignment_operator': [],
-            'delimiter': [],
-            'whitespace': [(str.isspace, 'whitespace')]
+            'identificator': [(self.is_alnum, 'identificator')],
+            'constanta intreaga': [(str.isdigit, 'constanta intreaga')],
+            'doua puncte': [(lambda char: char == '=', 'operator de asignare')],
+            'operator de asignare': [],
+            'delimitator': [],
+            'spatiu': [(str.isspace, 'spatiu')]
         }
 
     @staticmethod
@@ -84,15 +84,15 @@ class LexicalAnalyzer:
             if not transitioned:
                 if last_final_state is not None:
                     # Check if the token is a keyword
-                    if last_final_state == 'identifier' and value in self.keyword_table:
-                        last_final_state = 'keyword'
+                    if last_final_state == 'identificator' and value in self.keyword_table:
+                        last_final_state = 'cuvant cheie'
 
                     self.current_index = last_final_index
                     self.current_state = 'initial'
                     if self.states[last_final_state].get('is_final'):
                         return Token(last_final_state, self.add_string_to_table(value[:last_final_index - token_start]))
                 else:
-                    return Token('error', f"La poziția {token_start}")
+                    return Token('eroare', f"La poziția {token_start}")
 
         self.current_state = 'initial'
         if last_final_state and self.states[last_final_state].get('is_final'):
@@ -107,12 +107,12 @@ def main():
 
     while True:
         token = analyzer.gettoken()
-        if token is None or token.tip == 'error':
+        if token is None or token.tip == 'eroare':
             break
         tokens.append(token)
 
     for token in tokens:
-        if token.tip != 'whitespace':
+        if token.tip != 'spatiu':
             print(token)
     print(analyzer.string_table)
 
