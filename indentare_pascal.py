@@ -1,6 +1,4 @@
-# Scrieti un program pentru formatarea (scrierea indentata, frumoasa)
-# programelor Pascal, folosind gramatici atributate.
-# Programul Pascal initial si cel formatat sunt stocate in fisiere.
+# FORMATARE/INDENTARE PROGRAM - LIMBAJUL DE PROGRAMARE PASCAL
 # Jilavu Alexandru
 
 # Precizari:

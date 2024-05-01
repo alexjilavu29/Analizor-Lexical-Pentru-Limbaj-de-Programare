@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bd23289-608f-40c7-a7af-baebf3a78142" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/tema2.py" beforeDir="false" afterPath="$PROJECT_DIR$/indentare_pascal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/indentare_pascal.py" beforeDir="false" afterPath="$PROJECT_DIR$/indentare_pascal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rezultat.txt" beforeDir="false" afterPath="$PROJECT_DIR$/rezultat.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
