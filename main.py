@@ -1,6 +1,30 @@
 # ANALIZOR LEXICAL - LIMBAJUL DE PROGRAMARE PASCAL
 # Jilavu Alexandru
 
+# Functionalitati program:
+# - Citeste un fisier sursa cod_sursa.txt
+# - Identifica tokenii din codul sursa
+# - Scrie tokenii in fisierul rezultat.txt
+# - Identifica erorile de analiza lexicala si le scrie in fisierul rezultat.txt
+# - Scrie tabela de stringuri in fisierul rezultat.txt
+
+# Forme lexicale recunoscute:
+# - Identificatori
+# - Cuvinte cheie
+# - Constante intregi
+# - Constante reale
+# - Operatori de asignare
+# - Delimitatori
+# - Spatii
+# - Puncte
+# - Comentarii
+# - Erori
+# - Comentarii deschise dar neinchise
+
+# Observatie: Comentariile sunt introduse ca si elemente recunoscute pentru a face diferenta dintre
+# un comentariu inchis si un comentariu deschis dar neinchis. Acestea pot fi eliminate din fisierul rezultat.txt
+# in aceeasi maniera ca si spatiile.
+
 # Definire clasa Token
 class Token:
     def __init__(self, tip, valoare):
@@ -35,7 +59,9 @@ class LexicalAnalyzer:
             'doua puncte': {'is_final': True},
             'delimitator': {'is_final': True},
             'spatiu': {'is_final': True},
-            'punct': {'is_final': True}
+            'punct': {'is_final': True},
+            'comentariu': {'is_final': True},
+            'comentariu inchis': {'is_final': True},
         }
         # Starea curentă
         self.current_state = 'initial'
@@ -47,13 +73,16 @@ class LexicalAnalyzer:
                 (str.isdigit, 'constanta intreaga'),
                 (lambda char: char == ':', 'doua puncte'),
                 (lambda char: char in ';.', 'delimitator'),
-                (str.isspace, 'spatiu')
+                (str.isspace, 'spatiu'),
+                (lambda char: char == '{', 'comentariu'),
             ],
             'identificator': [(self.is_alnum, 'identificator')],
             'constanta intreaga': [(str.isdigit, 'constanta intreaga'),
                                     (lambda char: char == '.', 'punct'),
                                     (lambda char: char.isalpha(), 'eroare')],
-            'constanta flotanta': [(str.isdigit, 'constanta flotanta')],
+            'constanta flotanta': [(str.isdigit, 'constanta flotanta'),
+                                   (lambda char: char == '.', 'eroare'),
+                                   (lambda char: char.isalpha(), 'eroare')],
             'punct': [(str.isdigit, 'constanta flotanta'),
                       (lambda char: char.isalpha(), 'eroare'),
                       (lambda char: char == '.', 'eroare'),
@@ -61,7 +90,10 @@ class LexicalAnalyzer:
             'doua puncte': [(lambda char: char == '=', 'operator de asignare')],
             'operator de asignare': [],
             'delimitator': [],
-            'spatiu': [(str.isspace, 'spatiu')]
+            'spatiu': [(str.isspace, 'spatiu')],
+            'comentariu': [(lambda char: char != '}', 'comentariu'),
+                           (lambda char: char == '}', 'comentariu inchis')],
+            'comentariu inchis': [],
         }
 
     @staticmethod
@@ -118,7 +150,6 @@ class LexicalAnalyzer:
                     # Check if the token is a keyword
                     if last_final_state == 'identificator' and value in self.keyword_table:
                         last_final_state = 'cuvant cheie'
-
                     self.current_index = last_final_index
                     self.current_state = 'initial'
                     # Daca am gasit un cuvant cheie, returnam un token cu ultimul tip final si valoarea gasita
