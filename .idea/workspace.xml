@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bd23289-608f-40c7-a7af-baebf3a78142" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/cod_sursa_2.pas" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rezultat_2.pas" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tema2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tema2.py" beforeDir="false" afterPath="$PROJECT_DIR$/indentare_pascal.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +34,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.analizor_lexical.executor": "Run",
+    "Python.indentare_pascal.executor": "Run",
     "Python.main.executor": "Run",
     "Python.tema2.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
