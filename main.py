@@ -17,7 +17,11 @@ class LexicalAnalyzer:
         self.current_index = 0
         self.string_table = {}
         # Cuvintele cheie din Pascal
-        self.keyword_table = {"begin", "end", "var", "integer", "for", "if", "else"}
+        self.keyword_table = {"and", "array", "begin", "case", "const", "div", "do", "downto", "else", "end", "file",
+                                "for", "function", "goto", "if", "in", "label", "mod", "nil", "not", "of", "or",
+                                "packed", "procedure", "program", "record", "repeat", "set", "then", "to", "type",
+                                "until", "var", "while", "with", "integer", "real", "char", "boolean", "string",
+                                "true", "false", "write", "writeln", "readln", "read", "break", "continue", "exit"}
 
         # Definire stari
         self.states = {
