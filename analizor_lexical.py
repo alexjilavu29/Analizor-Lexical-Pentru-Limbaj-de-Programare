@@ -15,6 +15,7 @@
 # - Constante intregi
 # - Constante reale
 # - Operatori de asignare
+# - Operatori de adunare
 # - Delimitatori
 # - Spatii
 # - Puncte
@@ -57,6 +58,7 @@ class LexicalAnalyzer:
             'cuvant cheie': {'is_final': True},
             'eroare': {'is_final': True},
             'operator de asignare': {'is_final': True},
+            'operator de adunare': {'is_final': True},
             'doua puncte': {'is_final': True},
             'delimitator': {'is_final': True},
             'spatiu': {'is_final': True},
@@ -74,9 +76,10 @@ class LexicalAnalyzer:
                 (self.is_alpha, 'identificator'),
                 (str.isdigit, 'constanta intreaga'),
                 (lambda char: char == ':', 'doua puncte'),
-                (lambda char: char in ';.', 'delimitator'),
+                (lambda char: char in ';,.', 'delimitator'),
                 (str.isspace, 'spatiu'),
                 (lambda char: char == '{', 'comentariu'),
+                (lambda char: char == '+', 'operator de adunare'),
             ],
             'identificator': [(self.is_alnum, 'identificator')],
             'constanta intreaga': [(str.isdigit, 'constanta intreaga'),
@@ -91,6 +94,7 @@ class LexicalAnalyzer:
                       (lambda char: char == ' ', 'eroare')],
             'doua puncte': [(lambda char: char == '=', 'operator de asignare')],
             'operator de asignare': [],
+            'operator de adunare': [(lambda char: char == '+', 'operator de adunare')],
             'delimitator': [],
             'spatiu': [(str.isspace, 'spatiu')],
             'comentariu': [(lambda char: char != '}', 'comentariu'),

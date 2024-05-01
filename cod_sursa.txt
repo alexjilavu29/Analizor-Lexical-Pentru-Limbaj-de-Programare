@@ -1,2 +1,8 @@
-var {abc} {def}x : 1.5 integer; {beg}in
-abc := 1.5;
+program Exemplu; {numele programului}
+var {declararea variabilelor}
+  a, b, c : integer; {a, b, c sunt variabile de tip integer}
+begin {inceputul programului}
+  a := 1; {atribuirea valorii 1 variabilei a}
+  b := 2; {atribuirea valorii 2 variabilei b}
+  c := a + b; {atribuirea valorii a+b variabilei c}
+end. {sfarsitul programului}
