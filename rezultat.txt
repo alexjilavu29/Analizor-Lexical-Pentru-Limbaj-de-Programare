@@ -1,3 +1,4 @@
+Tokeni:
 Tip: cuvant cheie, Valoare: var
 Tip: identificator, Valoare: x
 Tip: doua puncte, Valoare: :
@@ -6,10 +7,13 @@ Tip: delimitator, Valoare: ;
 Tip: cuvant cheie, Valoare: begin
 Tip: identificator, Valoare: x
 Tip: operator de asignare, Valoare: :=
-Tip: constanta intreaga, Valoare: 10
+Tip: constanta flotanta, Valoare: 10.5
+Tip: constanta flotanta, Valoare: 5.103
 Tip: delimitator, Valoare: ;
 Tip: cuvant cheie, Valoare: end
 Tip: delimitator, Valoare: .
-Tabela de stringuri: {'var': 0, ' ': 1, 'x': 2, ':': 3, 'integer': 4, ';': 5, 'begin': 6, ':=': 7, '10': 8, 'end': 9, '.': 10}
+
+Tabela de stringuri:
+ {'var': 0, ' ': 1, 'x': 2, ':': 3, 'integer': 4, ';': 5, 'begin': 6, ':=': 7, '10.5': 8, '5.103': 9, '  ': 10, 'end': 11, '.': 12}
 
 

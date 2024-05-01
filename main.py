@@ -30,7 +30,8 @@ class LexicalAnalyzer:
             'operator de asignare': {'is_final': True},
             'doua puncte': {'is_final': True},
             'delimitator': {'is_final': True},
-            'spatiu': {'is_final': True}
+            'spatiu': {'is_final': True},
+            'punct': {'is_final': True}
         }
         # Starea curentă
         self.current_state = 'initial'
@@ -45,7 +46,14 @@ class LexicalAnalyzer:
                 (str.isspace, 'spatiu')
             ],
             'identificator': [(self.is_alnum, 'identificator')],
-            'constanta intreaga': [(str.isdigit, 'constanta intreaga')],
+            'constanta intreaga': [(str.isdigit, 'constanta intreaga'),
+                                    (lambda char: char == '.', 'punct'),
+                                    (lambda char: char.isalpha(), 'eroare')],
+            'constanta flotanta': [(str.isdigit, 'constanta flotanta')],
+            'punct': [(str.isdigit, 'constanta flotanta'),
+                      (lambda char: char.isalpha(), 'eroare'),
+                      (lambda char: char == '.', 'eroare'),
+                      (lambda char: char == ' ', 'eroare')],
             'doua puncte': [(lambda char: char == '=', 'operator de asignare')],
             'operator de asignare': [],
             'delimitator': [],
@@ -131,19 +139,34 @@ def main():
     analyzer = LexicalAnalyzer(source)
     tokens = []
 
+    error_check = False
+    error_token = ()
+    # Obtinem tokenii
     while True:
         token = analyzer.gettoken()
-        if token is None or token.tip == 'eroare':
+        if token is not None:
+            if token.tip == 'eroare':
+                error_check = True
+                error_token = token
+                break
+        else:
             break
         tokens.append(token)
 
+    # Scriem tokenii in fisierul rezultat.txt
+    with open('rezultat.txt', 'w') as file:
+        file.write("Tokeni:\n")
     for token in tokens:
         if token.tip != 'spatiu':
             with open('rezultat.txt', 'a') as file:
                 file.write(f"{token}\n")
             print(token)
+    if error_check:
+        with open('rezultat.txt', 'a') as file:
+            file.write(f"\nEroare la analiza lexicala: {error_token.valoare}\n")
+        print(f"Eroare la analiza lexicala: {error_token.valoare}")
     with open('rezultat.txt', 'a') as file:
-        file.write(f"Tabela de stringuri: {analyzer.string_table}\n\n\n")
+        file.write(f"\nTabela de stringuri:\n {analyzer.string_table}\n\n\n")
     print(analyzer.string_table)
 
 if __name__ == "__main__":

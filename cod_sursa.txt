@@ -1,1 +1,1 @@
-var x : integer; begin x := 10; end.
+var x : integer; begin x := 10.5 5.103  ; end.
