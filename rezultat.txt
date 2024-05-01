@@ -4,10 +4,17 @@ Tip: comentariu inchis, Valoare: {abc}
 Tip: comentariu inchis, Valoare: {def}
 Tip: identificator, Valoare: x
 Tip: doua puncte, Valoare: :
-
-Eroare la analiza lexicala: 1.5a
+Tip: constanta flotanta, Valoare: 1.5
+Tip: cuvant cheie, Valoare: integer
+Tip: delimitator, Valoare: ;
+Tip: comentariu inchis, Valoare: {beg}
+Tip: cuvant cheie, Valoare: in
+Tip: identificator, Valoare: abc
+Tip: operator de asignare, Valoare: :=
+Tip: constanta flotanta, Valoare: 1.5
+Tip: delimitator, Valoare: ;
 
 Tabela de stringuri:
- {'var': 0, ' ': 1, '{abc}': 2, '{def}': 3, 'x': 4, ':': 5, '1.5a': 6}
+ {'var': 0, ' ': 1, '{abc}': 2, '{def}': 3, 'x': 4, ':': 5, '1.5': 6, 'integer': 7, ';': 8, '{beg}': 9, 'in': 10, '\n': 11, 'abc': 12, ':=': 13}
 
 

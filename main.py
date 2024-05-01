@@ -7,6 +7,7 @@
 # - Scrie tokenii in fisierul rezultat.txt
 # - Identifica erorile de analiza lexicala si le scrie in fisierul rezultat.txt
 # - Scrie tabela de stringuri in fisierul rezultat.txt
+# - Detecteaza trecerea pe rand nou
 
 # Forme lexicale recunoscute:
 # - Identificatori
@@ -62,6 +63,7 @@ class LexicalAnalyzer:
             'punct': {'is_final': True},
             'comentariu': {'is_final': True},
             'comentariu inchis': {'is_final': True},
+            'rand nou': {'is_final': True},
         }
         # Starea curentă
         self.current_state = 'initial'
@@ -94,6 +96,7 @@ class LexicalAnalyzer:
             'comentariu': [(lambda char: char != '}', 'comentariu'),
                            (lambda char: char == '}', 'comentariu inchis')],
             'comentariu inchis': [],
+            'rand nou': [(lambda char: char == '\n', 'rand nou')],
         }
 
     @staticmethod
