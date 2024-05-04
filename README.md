@@ -21,7 +21,7 @@ The lexical analyzer scans a Pascal source code file (`cod_sursa.txt`), identifi
 
 Run the script with a source file named `cod_sursa.txt` in the same directory:
 
-python lexical_analyzer.py
+```python lexical_analyzer.py```
 
 ## Formatter
 
