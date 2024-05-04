@@ -50,3 +50,59 @@ Ensure that the source file `cod_sursa_2.pas` is in the directory and run the sc
 Contributions to enhance the functionalities of the lexical analyzer and formatter are welcome. Please feel free to fork the repository, make your changes, and submit a pull request.
 
 
+# Roumanian Translation Below
+--- 
+
+
+
+# Toolkit pentru Limbajul de Programare Pascal
+
+Acest repository conține două programe Python concepute pentru manipularea codului Pascal. Primul program este un analizor lexical care citește codul Pascal și identifică diferiți tokeni și erori. Al doilea program este un formator care indentează și formatează codul sursă Pascal conform stilurilor convenționale de programare.
+
+## Conținut
+
+- `lexical_analyzer.py`: Analizor lexical pentru limbajul de programare Pascal.
+- `formatter.py`: Formator de cod sursă pentru limbajul de programare Pascal.
+
+## Analizor Lexical
+
+Analizorul lexical scanează un fișier de cod sursă Pascal (`cod_sursa.txt`), identifică tokenii (cum ar fi cuvinte cheie, identificatori și literali) și afișează rezultatele în `rezultat.txt`. De asemenea, detectează și raportează erorile lexicale și menține un tabel de șiruri pentru toți tokenii identificați.
+
+### Caracteristici
+
+- Identifică diferiți tokeni, cum ar fi identificatori, cuvinte cheie, constante (întregi și reale), operatori de asignare și adunare, delimitatori, spații, comentarii (inclusiv comentarii nedeschise), și erori lexicale.
+- Oferă o listă de tokeni și un tabel de șiruri în `rezultat.txt`.
+- Raportarea erorilor lexicale.
+
+### Utilizare
+
+Rulează scriptul cu un fișier sursă numit `cod_sursa.txt` în același director:
+
+python lexical_analyzer.py
+
+## Formator
+
+Formatorul citește codul Pascal dintr-un fișier (`cod_sursa_2.pas`), îl formatează corect indendând blocurile și scrie codul formatat în `rezultat_2.pas`.
+
+### Caracteristici
+
+- Suportă indentarea pentru diverse construcții Pascal, inclusiv blocuri de program, declarații de variabile, structuri de control (`if`, `else`, `for`, `while`) și altele.
+- Elimină spațiile și comentariile redundante.
+- Asigură un output de cod structurat și lizibil.
+
+### Utilizare
+
+Asigură-te că fișierul sursă `cod_sursa_2.pas` se află în director și rulează scriptul:
+
+python formatter.py
+
+## Cerințe
+
+- Python versiunea 3.6 sau mai recentă.
+- Nu sunt necesare biblioteci externe pentru analizorul lexical.
+- Formatorul utilizează modulul `re` pentru expresii regulate, care este inclus în distribuțiile standard Python.
+
+## Contribuții
+
+Contribuțiile pentru îmbunătățirea funcționalităților analizorului lexical și formatorului sunt binevenite. Te încurajez să clonezi repository-ul, să faci modificările dorite și să trimiți un pull request.
+
