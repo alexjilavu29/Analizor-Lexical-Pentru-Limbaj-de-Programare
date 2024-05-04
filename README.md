@@ -78,7 +78,7 @@ Analizorul lexical scanează un fișier de cod sursă Pascal (`cod_sursa.txt`), 
 
 Rulează scriptul cu un fișier sursă numit `cod_sursa.txt` în același director:
 
-python lexical_analyzer.py
+```python lexical_analyzer.py```
 
 ## Formator
 
@@ -94,7 +94,7 @@ Formatorul citește codul Pascal dintr-un fișier (`cod_sursa_2.pas`), îl forma
 
 Asigură-te că fișierul sursă `cod_sursa_2.pas` se află în director și rulează scriptul:
 
-python formatter.py
+```python formatter.py```
 
 ## Cerințe
 
